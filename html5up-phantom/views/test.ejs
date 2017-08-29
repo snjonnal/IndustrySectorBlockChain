@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Blockchain Opportunities</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/mdb.min.css" rel="stylesheet">
+	<link href="css/style.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/card.css" />
+  <!-- <link rel="stylesheet" href="/css/main.css" /> -->
+  <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+
+  <!--thumbnail section-->
+  <section class="container">
+    <div class="row add-bottom text-center">
+      <a href="#migrant" class="thumbnail" data-toggle="modal">
+        <img src=".." alt="Project Image" class="img-responsive center-block">
+      </a>
+      <br />
+      <br />
+      <a href="#water" class="thumbnail" data-toggle="modal">
+        <img src=".." alt="Project Image1" class="img-responsive center-block">
+      </a>
+    </div>
+  </section>
+
+  <!--Modal Content-->
+  <div class="modal fade" id="migrant" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h3>Migrants</h3>
+          <button type="button" class="close" data-dismiss="modal">x</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-footer txt_center">
+            <p>
+              <img src=".." alt="migrant01" class="pull-right">The Grapes of Wrath is an Amer list novel written by John Steinbeck and published in 1939. The book won the National Book Award and Pulitzer Prize for fiction, and it was cited prominently
+              when Steinbeck was awarded the Nobel Prize in 1962
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="showModal('water')">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="water" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Water</h3>
+          <button type="button" class="close" data-dismiss="modal">x</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-footer txt_center">
+            <p>
+              <img src=".." alt="water01" class="pull-right">The Orchidaceae are a diverse and widespread family of flowering plants, with blooms that are often colourful and often fragrant, commonly known as the orchid family. Along with the Asteraceae,
+              they are one of the two largest families of flowering plants. The Orchidaceae have about 27,800 currently accepted species, distributed in about 880 genera
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="showModal('migrant')">Previous</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function showModal(id) {
+      $(".modal").modal('hide');
+      $("#" + id).modal();
+    }
+
+  </script>
+
+
+
+  <!-- Scripts -->
+  <script src="js/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

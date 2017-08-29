@@ -1,0 +1,206 @@
+<% layout('layout') %>
+
+	<!--Navbar-->
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+</button>
+<a class="navbar-brand" href="#">Navbar</a>
+
+<div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Link</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link disabled" href="#">Disabled</a>
+		</li>
+	</ul>
+
+	<form class="form-inline my-2 my-lg-0">
+		<input class="form-control mr-sm-2" type="text" placeholder="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+
+	<ul class="navbar-nav mr-auto">
+		<li>
+			<a href="#menu">Menu</a>
+		</li>
+	</ul>
+
+</div>
+</nav>
+	<!--/.Navbar-->
+
+	<!-- Wrapper
+			<div id="wrapper" style="background-image: url('../images/bg.jpg'); background-repeat: no-repeat;">-->
+			<!-- <div class="container-fluid"> -->
+
+			<!-- </div> -->
+
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="index" class="logo">
+												<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Blockchain in Industrial Sector</span>
+											</a>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu1</h2>
+					<ul>
+						<li><a href="index">Home</a></li>
+						<li><a href="generic">Ipsum veroeros</a></li>
+						<li><a href="generic">Tempus etiam</a></li>
+						<li><a href="generic">Consequat dolor</a></li>
+						<li><a href="elements">Elements</a></li>
+					</ul>
+				</nav>
+
+
+
+				<div class="row">
+    			<div class="col-md-5 col-sm-12 col-lg-4 col-xs-12">
+						<h3><span class="label label-default">Blockchain Opportunities per Quater</span></h3>
+						<p>Blockchain opportunities seggrgated by various sectors presented in each quater for 2017</p>
+					</div>
+    			<div class="col-md-7 col-sm-12 col-lg-8 col-xs-12" id="chart_div1">
+
+					</div>
+
+  			</div>
+
+				<div class="row" style="padding-top:20px">
+					<div class="col-md-7 col-sm-12 col-lg-8 col-xs-12" id="chart_div2"></div>
+					<div class="col-md-5 col-sm-12 col-lg-4 col-xs-12">
+						<h3><span class="label label-default">Blockchain Opportunities by Sectors</span></h3>
+						<p>Blockchain opportunities seggrgated by various sectors</p>
+					</div>
+  			</div>
+
+
+				<!-- Main -->
+				<!-- <section style="background-color: red"> -->
+					<!-- <div class="box alt">
+						<div class="row uniform">
+							<div class="6u">
+
+								<h3>Blockchain opportunities</h3>
+
+							</div>
+							<div class="6u">
+								<h3>Blockchain in various sectors</h3>
+							</div>
+
+							<div class="6u">
+								<div id="chart_div11" class="chart"></div>
+
+							</div>
+							<div class="6u">
+								<div id="chart_div21" class="chart"></div>
+							</div>
+						</div>
+					</div> -->
+				<!-- </section> -->
+				<section>
+					<div class="container-fluid">
+					<h3>Top 10 Blockchain Opportunities</h3>
+					<div id="table-wrapper">
+						<div id="table-scroll">
+							<table id="oppr_table" class="rwd-table">
+								<thead>
+									<!-- <tr>
+												<th width="5%">Opportunity Number</th>
+												<th width="6%">IOT</th>
+												<th width="6%">Client name</th>
+												<th width="45%">Description</th>
+												<th width="3%">Engaged</th>
+												<th width="4%">Engaged CIC</th>
+												<th width="6%">Qtr</th>
+												<th width="6%">Industry</th>
+												<th width="6%">Oppty Value</th>
+												<th width="6%">Opportunity owner</th>
+											</tr> -->
+								</thead>
+								<!-- <tfoot>
+											<tr>
+												<td colspan="2"></td>
+												<td>100.00</td>
+											</tr>
+										</tfoot> -->
+							</table>
+						</div>
+					</div>
+				</div>
+				</section>
+
+				<section>
+					<div class="container-fluid">
+					<div id="table-wrapper">
+						<div id="table-scroll">
+					<h3 style="padding-top: 30px">Top 10 Blockchain Opportunities</h3>
+					<!-- <div class="table-wrapper"> -->
+					<table id="oppr_table1" class="rwd-table">
+						<thead>
+
+						</thead>
+
+					</table>
+				</div>
+				</div>
+			</div>
+				</section>
+
+			</div>
+		</header>
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="field half first">
+							<input type="text" name="name" id="name" placeholder="Name" />
+						</div>
+						<div class="field half">
+							<input type="email" name="email" id="email" placeholder="Email" />
+						</div>
+						<div class="field">
+							<textarea name="message" id="message" placeholder="Message"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="special" /></li>
+						</ul>
+					</form>
+				</section>
+
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
+						<li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</section>
+
+				<!-- <ul class="copyright">
+											<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul> -->
+			</div>
+		</footer>
+
+	</div>
+	
+
+	<!-- Scripts -->
