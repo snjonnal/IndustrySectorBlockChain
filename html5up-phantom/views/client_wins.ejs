@@ -14,24 +14,9 @@
 				<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Blockchain in Industrial Sector</span>
 			</a>
 
-			<div class="row">
-				<div class="col-md-5 col-sm-12 col-lg-4 col-xs-12">
-					<h3><span class="label label-default">Blockchain Opportunities per Quater</span></h3>
-					<p>Blockchain opportunities seggrgated by various sectors presented in each quater for 2017</p>
-				</div>
-				<div class="col-md-7 col-sm-12 col-lg-8 col-xs-12" id="chart_div1">
 
-				</div>
 
-			</div>
 
-			<div class="row" style="padding-top:20px">
-				<div class="col-md-7 col-sm-12 col-lg-8 col-xs-12" id="chart_div2"></div>
-				<div class="col-md-5 col-sm-12 col-lg-4 col-xs-12">
-					<h3><span class="label label-default">Blockchain Opportunities by Sectors</span></h3>
-					<p>Blockchain opportunities seggrgated by various sectors</p>
-				</div>
-			</div>
 
 			<div class="row" style="padding-top:30px;">
 				<!--First columnn-->
@@ -42,16 +27,12 @@
 							<option selected>Choose...</option>
 						</select>
 
-						<label class="mr-sm-2" for="iotSelect">IOT</label>
-						<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="iotSelect">
+						<label class="mr-sm-2" for="qtrSelect">Qtr</label>
+						<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="qtrSelect">
 							<option selected>Choose...</option>
 						</select>
 
-						<label class="mr-sm-2" for="salesStageSelect">Sales Stage</label>
-						<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="salesStageSelect">
-							<option selected>Choose...</option>
-						</select>
-						<svg class="reset link" fill="transparent" height="21" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 21" width="20" xmlns="http://www.w3.org/2000/svg">
+						<svg id="reset" class="link" fill="transparent" height="21" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 21" width="20" xmlns="http://www.w3.org/2000/svg">
 							<path d="M12.75 2.484c3.495 1.236 6 4.57 6 8.488 0 3.69-2.22 6.862-5.4 8.25"></path>
 							<path d="M17.423 20.25l-4.073-1.028 1.028-4.072M6.75 19.46c-3.495-1.236-6-4.57-6-8.488 0-3.69 2.22-6.862 5.4-8.25"></path>
 							 <path d="M2.077 1.694L6.15 2.722 5.122 6.794"></path>
@@ -73,7 +54,7 @@
 
 			<section>
 				<div class="container-fluid">
-					<h3>Top 10 Blockchain Opportunities</h3>
+					<h3>Top Blockchain Opportunities - WON</h3>
 					<div id="table-wrapper">
 						<div id="table-scroll">
 							<table id="oppr_table" class="rwd-table">
@@ -103,11 +84,45 @@
 				</div>
 			</section>
 
+			<div class="row" style="padding-top:30px;">
+				<!--First columnn-->
+				<div class="col-md-12">
+					<form class="form-inline">
+						<label class="mr-sm-2" for="industrySelect1">Industry</label>
+						<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="industrySelect1">
+							<option selected>Choose...</option>
+						</select>
+
+						<label class="mr-sm-2" for="qtrSelect1">Qtr</label>
+						<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="qtrSelect1">
+							<option selected>Choose...</option>
+						</select>
+
+						<svg id="reset1" class="link" fill="transparent" height="21" stroke="currentColor" stroke-width="1.5" viewBox="0 0 20 21" width="20" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12.75 2.484c3.495 1.236 6 4.57 6 8.488 0 3.69-2.22 6.862-5.4 8.25"></path>
+							<path d="M17.423 20.25l-4.073-1.028 1.028-4.072M6.75 19.46c-3.495-1.236-6-4.57-6-8.488 0-3.69 2.22-6.862 5.4-8.25"></path>
+							 <path d="M2.077 1.694L6.15 2.722 5.122 6.794"></path>
+						 </svg>
+						 <span class="reset small-padding">Reset Filters</span>
+
+						<!-- <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+							<input type="checkbox" class="custom-control-input">
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description">Remember my preference</span>
+						</label> -->
+
+						<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+					</form>
+
+				</div>
+				<!--First columnn-->
+			</div>
+
 			<section>
 				<div class="container-fluid">
 					<div id="table-wrapper">
 						<div id="table-scroll">
-							<h3 style="padding-top: 30px">Top 10 Blockchain Opportunities</h3>
+							<h3 style="padding-top: 30px">Top Blockchain Opportunities To Be Realized</h3>
 							<!-- <div class="table-wrapper"> -->
 							<table id="oppr_table1" class="rwd-table">
 								<thead>
@@ -129,7 +144,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="js/fill_chart.js"></script>
-<script type="text/javascript" src="js/fill_table.js"></script>
+<script type="text/javascript" src="js/client_wins.js"></script>
+<!-- <script type="text/javascript" src="js/clients_win0.js"></script> -->
 
 	<!-- Scripts -->

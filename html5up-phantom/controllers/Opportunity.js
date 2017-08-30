@@ -3,8 +3,9 @@ var OpportunityController = function(opportunityModel) {
   this.opportunityModel = opportunityModel;
   this.ApiResponse = require('../models/api-response');
 
-  OpportunityController.prototype.getOpportunityData = function(callback) {
+  OpportunityController.prototype.getOpportunityData = function(req, callback) {
     var me = this;
+    var salesStage = req.query.sales_stage;
     me.opportunityModel.find({}, {
       _id: 0
     }).select('-__v').exec((err, data) => {
@@ -16,11 +17,29 @@ var OpportunityController = function(opportunityModel) {
           }
         }));
       }
+      var jsonContent = data;
+
+      // filtering the jsonData for Industry Comp Srv
+      jsonContent = jsonContent.filter(function(element){
+        return element["Industry"] !== "Comp Svc & Prof Svc";
+      })
+
+      if(salesStage){
+        var salesStageArr = salesStage.split(',');
+        jsonContent = jsonContent.filter(function(element) {
+          for(var i=0;i<salesStageArr.length; i++){
+            if(element["Sales Stage"].startsWith(salesStageArr[i])){
+              return true;
+            }
+          }
+          return false;
+        });
+      }
       //res.send(JSON.stringify(data));
       return callback(err, new me.ApiResponse({
         success: true,
         extras: {
-          data: data
+          data: jsonContent
         }
       }));
 
@@ -66,6 +85,11 @@ var OpportunityController = function(opportunityModel) {
           }
         }));
       }
+
+      // filtering the data for Industry Comp Srv
+      data = data.filter(function(element){
+        return element["Industry"] !== "Comp Svc & Prof Svc";
+      })
       //console.log(data.length);
       data.forEach(function(element) {
         var qtr = element["Qtr"];
@@ -97,6 +121,34 @@ var OpportunityController = function(opportunityModel) {
 
     })
   }
+
+
+  OpportunityController.prototype.getOpportunityDataStageWon = function(callback) {
+    var me = this;
+    me.opportunityModel.find({}, {
+      _id: 0
+    }).exec((err, data) => {
+      if (err) {
+        return callback(err, new me.ApiResponse({
+          success: false,
+          extras: {
+            msg: "Database Error"
+          }
+        }));
+      }
+      var jsonContent = data.filter(function(element) {
+        return element["Sales Stage"] === "07-Won/Implementing";
+      });
+
+      return callback(err, new me.ApiResponse({
+        success: true,
+        extras: {
+          data: jsonContent
+        }
+      }));
+  });
+}
+
 }
 
 module.exports = OpportunityController;

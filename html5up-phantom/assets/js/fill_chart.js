@@ -76,7 +76,7 @@ $.ajax({
 
         chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
         chart.draw(dataPie, optionsPie);
-        chart.setSelection([{row: 4}]);
+        chart.setSelection([{row: 0}]);
 
     }
 

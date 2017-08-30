@@ -34,6 +34,9 @@ module.exports = (app) => {
   app.get('/whats_new', function(req,res, next){
     res.render('whats_new', {title: 'What\'s New '});
   });
+  app.get('/client_wins', function(req,res, next){
+    res.render('client_wins', {title: 'Client\'s Win '});
+  });
   app.get('/contacts', function(req,res, next){
     res.render('contacts', {title: 'Blockchain Contacts'});
   });
@@ -45,7 +48,7 @@ module.exports = (app) => {
 
   // to delete
     app.get('/index1', function(req,res, next){
-      res.render('index10', {title: 'Blockchain Solution'});
+      res.render('index1', {title: 'Blockchain Solution'});
     });
     // to delete
     app.get('/mvp1', function(req,res, next){
@@ -58,7 +61,15 @@ module.exports = (app) => {
 
   app.get('/opp_data', function(req,res, next){
     var opportunityController = new OpportunityController(Opportunity);
-    opportunityController.getOpportunityData((err, response) => {
+    opportunityController.getOpportunityData(req, (err, response) => {
+      return res.send(response);
+    });
+  });
+
+  app.get('/opp_based_on_industry', function(req,res, next){
+    var opportunityController = new OpportunityController(Opportunity);
+    opportunityController.getOpportunityDataIndustrywise((err, response) => {
+      console.log('testing');
       return res.send(response);
     });
   });
