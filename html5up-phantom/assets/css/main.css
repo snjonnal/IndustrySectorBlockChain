@@ -3201,7 +3201,11 @@
 
 	#footer {
 		padding: 3em 0 3em 0 ;
-		background-color: #f6f6f6;
+		background-color: #3c6df0;
+		color: #ffffff;
+		font-weight: 400;
+		font-family: Arial;
+		font-size:18px;
 	}
 
 		#footer > .inner {
@@ -3473,6 +3477,21 @@ li#ibm-home {
    background: rgba(255,255,255, 0.8);
    border-color: rgba(255,255,255,0.8);
 	 height: 35px;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: left;
+		color: #ffffff;
+		font-weight: 400;
+		font-family: Arial;
+		font-size:18px;
+    margin:0 auto;
+		margin-left: 2%;
+
 }
 
 .nav-link{
