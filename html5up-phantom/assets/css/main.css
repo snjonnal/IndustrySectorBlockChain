@@ -3201,7 +3201,7 @@
 
 	#footer {
 		padding: 3em 0 3em 0 ;
-		background-color: #3c6df0;
+		background-color: #252e6a;
 		color: #ffffff;
 		font-weight: 400;
 		font-family: Arial;
@@ -3719,6 +3719,48 @@ display: flex;
 		overflow: hidden;
 		position: relative;
 		text-align: center;
+		background-repeat: no-repeat;
+	}
+
+	#headerBannerUsecase{
+		padding: 9em 0 9em 0 ;
+		/*background-color: #4686a0;*/
+		/*color: rgba(255, 255, 255, 0.75);*/
+		/*background-attachment: fixed,							fixed,							fixed;*/
+		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-position: top left,						center center,					center center;
+		/*background-size: auto,							cover,							cover;*/
+		background-size: 100% 100%;
+		overflow: hidden;
+		position: relative;
+		background-repeat: no-repeat;
+	}
+
+	#headerBannerOpp{
+		padding: 9em 0 9em 0 ;
+		/*background-color: #4686a0;*/
+		/*color: rgba(255, 255, 255, 0.75);*/
+		/*background-attachment: fixed,							fixed,							fixed;*/
+		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-position: top left,						center center,					center center;
+		/*background-size: auto,							cover,							cover;*/
+		background-size: 100% 100%;
+		overflow: hidden;
+		position: relative;
+		background-repeat: no-repeat;
+	}
+
+	#headerBannerMvp{
+		padding: 9em 0 9em 0 ;
+		/*background-color: #4686a0;*/
+		/*color: rgba(255, 255, 255, 0.75);*/
+		/*background-attachment: fixed,							fixed,							fixed;*/
+		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-position: top left,						center center,					center center;
+		/*background-size: auto,							cover,							cover;*/
+		background-size: 100% 100%;
+		overflow: hidden;
+		position: relative;
 		background-repeat: no-repeat;
 	}
 
