@@ -21,9 +21,8 @@ var OpportunityController = function(opportunityModel) {
 
       // filtering the jsonData for Industry Comp Srv
       jsonContent = jsonContent.filter(function(element){
-        return element["Industry"] !== "Comp Svc & Prof Svc";
-      })
-
+        return element["Industry"] !== "Comp Svc & Prof Svc" && element["Brand"] === "GBS";
+      });
       if(salesStage){
         var salesStageArr = salesStage.split(',');
         jsonContent = jsonContent.filter(function(element) {
@@ -42,8 +41,6 @@ var OpportunityController = function(opportunityModel) {
           data: jsonContent
         }
       }));
-
-      //res.json({"err": null, "data": data});
     })
   }
 
@@ -88,7 +85,7 @@ var OpportunityController = function(opportunityModel) {
 
       // filtering the data for Industry Comp Srv
       data = data.filter(function(element){
-        return element["Industry"] !== "Comp Svc & Prof Svc";
+        return element["Industry"] !== "Comp Svc & Prof Svc" && element["Brand"] === "GBS";
       })
       //console.log(data.length);
       data.forEach(function(element) {

@@ -28,6 +28,9 @@ var MVPController = function(mvpModel) {
 
   MVPController.prototype.insertMVPData = function(mvpData, callback) {
     var me = this;
+    me.mvpModel.remove({}, function(data){
+      console.log('removed successfully');
+    })
     me.mvpModel.create(mvpData, (err, mvps) => {
       if (err) {
         return callback(err, new me.ApiResponse({

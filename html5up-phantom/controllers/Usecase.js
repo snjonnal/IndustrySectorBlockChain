@@ -45,6 +45,10 @@ var UsecaseController = function(usecaseModel) {
 
   UsecaseController.prototype.insertUsecaseData = function(usecaseData, callback) {
     var me = this;
+    me.usecaseModel.remove({}, function(data){
+      console.log('removed successfully');
+      console.log(data);
+    })
     me.usecaseModel.create(usecaseData, (err, usecases) => {
       if (err) {
         return callback(err, new me.ApiResponse({
