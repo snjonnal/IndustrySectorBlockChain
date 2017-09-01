@@ -34,7 +34,6 @@ $.ajax({
         });
         chartData.push(objArr);
       });
-
         var options = {
           title: 'Opportunities value (USD mn)',
           hAxis: {
@@ -63,20 +62,51 @@ $.ajax({
           pieChartData.push([industry, value]);
         });
 
-        //console.log('piechartdata');
-        //console.log(pieChartData);
-
         var dataPie = google.visualization.arrayToDataTable(pieChartData);
-
         var optionsPie = {
           title: 'Blockchain by Industry',
           pieStartAngle: 30,
           height: 450
         };
-
         chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
         chart.draw(dataPie, optionsPie);
         chart.setSelection([{row: 0}]);
+
+        var qtrIndSectorArr = [];
+        objArr = [];
+        objArr.push('Quarter');
+        objArr.push('Oppty Value');
+        qtrIndSectorArr.push(objArr);
+
+        qtrs.forEach((qtr) => {
+          objArr = [];
+          objArr.push(qtr);
+          let sum = 0;
+          for(var industry in data[qtr]){
+            if(data[qtr].hasOwnProperty(industry)){
+              sum += data[qtr][industry];
+            }
+          }
+          objArr.push(sum);
+          qtrIndSectorArr.push(objArr);
+        });
+
+        var qtrIndSectorChartOptions = {
+          title: 'Opportunities value (USD mn)',
+          hAxis: {
+            title: 'Quarter',
+            titleTextStyle: {
+              color: 'blue'
+            }
+          },
+          height: 450
+        };
+
+        var qtrIndSectorChartData = google.visualization.arrayToDataTable(qtrIndSectorArr);
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+        //chart.draw(qtrIndSectorChartData, {width: 400, height: 240, is3D: true, title: 'Company Performance'});
+        chart.draw(qtrIndSectorChartData, qtrIndSectorChartOptions);
+
 
     }
 

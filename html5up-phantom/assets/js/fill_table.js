@@ -37,9 +37,13 @@ $(document).ready(function() {
         $('#' + selectId).empty();
         //$('#' + selectId).append('Choose...')
         $('<option>').val("Choose...").text("Choose...").appendTo('#' + selectId);
-        for (let item of valueSet) {
+        var tempArr = Array.from(valueSet).sort();
+        tempArr.forEach(function(item){
           $('<option>').val(item).text(item).appendTo('#' + selectId);
-        }
+        });
+        // for (let item of valueSet) {
+        //   $('<option>').val(item).text(item).appendTo('#' + selectId);
+        // }
       }
 
       updateSelect("industrySelect", industrySet);
@@ -64,21 +68,21 @@ $(document).ready(function() {
         var industryFilterValue = this.value;
         industryFilter = (industryFilterValue.indexOf("Choose") == -1) ? industryFilterValue : undefined;
         updateFilterArray("industry", industryFilter);
-        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
+        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue, true);
       }
 
       function iotEvent(event) {
         var iotFilterValue = this.value;
         iotFilter = (iotFilterValue.indexOf("Choose") == -1) ? iotFilterValue : undefined;
         updateFilterArray("iot", iotFilter);
-        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
+        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue, true);
       }
 
       function salesStageEvent(event) {
         var salesStageFilterValue = this.value
         salesStageFilter = (salesStageFilterValue.indexOf("Choose") == -1) ? salesStageFilterValue : undefined;
         updateFilterArray("salesStage", salesStageFilter);
-        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
+        updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue, true);
       }
 
       $('#industrySelect').on('change', industryEvent);
@@ -89,7 +93,8 @@ $(document).ready(function() {
       $('.reset').on('click', function(event) {
         if (filterArray.length > 0) {
           updateFilterArray(filterArray[0], undefined);
-          updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
+          console.log('reset-filter' + filterArray.length);
+          updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue, true);
         }
       });
 
@@ -122,25 +127,22 @@ $(document).ready(function() {
         updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
       }
 
-      updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue);
+      updateTable("oppr_table", data, recordPerPage, contentFilter, sortOnOpptValue, true);
       //console.log(data);
-      // updateTable("oppr_table1", data, recordPerPage, function(element) {
-      //   return element["Engaged CIC"] === "India";
-      // }, sortOnOpptValue);
+      updateTable("oppr_table1", data, recordPerPage, function(element) {
+        return element["Engaged CIC"] === "India";
+      }, sortOnOpptValue, false);
       $("#oppr_table").tablesorter();
-      //$("#oppr_table1").tablesorter();
+      $("#oppr_table1").tablesorter();
 
       function sortOnOpptValue(a, b) {
         return parseFloat(b["Oppty Value (USD mn)"]) - parseFloat(a["Oppty Value (USD mn)"]);
       }
 
-      function updateTable(tableId, data, recordPerPage, filterFn, sortfn) {
+      function updateTable(tableId, data, recordPerPage, filterFn, sortfn, updateFilters) {
         $('#' + tableId).empty();
         var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
         $.each(data, function(index, value) {
-          // if (index == MAX_ROWS) {
-          //   return false;
-          // }
           arrItems.push(deepCopy(value)); // PUSH THE VALUES INSIDE THE ARRAY.
         });
         if (filterFn) {
@@ -152,7 +154,38 @@ $(document).ready(function() {
           // sort the filtered Array
           arrItems.sort(sortfn);
         }
+        if(updateFilters){
+        if (salesStageFilter === undefined) salesStageSet.clear();
+        if (iotFilter === undefined) iotSet.clear();
+        if (industryFilter === undefined) industrySet.clear();
 
+
+
+        for (var i = 0; i < arrItems.length; i++) {
+          if (industryFilter === undefined) {
+            var industryValue = arrItems[i]["Industry"];
+            if (industryValue !== undefined && industryValue !== '') {
+              industrySet.add(industryValue);
+            }
+          }
+          if (iotFilter === undefined) {
+            var iotValue = arrItems[i]["IOT"];
+            if (iotValue !== undefined && iotValue !== '') {
+              iotSet.add(iotValue);
+            }
+          }
+          if (salesStageFilter === undefined) {
+            var salesStageValue = arrItems[i]["Sales Stage"];
+            if (salesStageValue !== undefined && salesStageValue !== '') {
+              salesStageSet.add(salesStageValue);
+            }
+          }
+        }
+
+        if (salesStageFilter === undefined) updateSelect("salesStageSelect", salesStageSet);
+        if (iotFilter === undefined) updateSelect("iotSelect", iotSet);
+        if (industryFilter === undefined) updateSelect("industrySelect", industrySet);
+}
         // taking the MAX_ROWS
         if (MAX_ROWS < arrItems.length) {
           arrItems.splice(MAX_ROWS, arrItems.length - MAX_ROWS);
@@ -188,38 +221,7 @@ $(document).ready(function() {
         }
         $("#" + tableId + " thead:last").after('<tbody >' + rowData + '</tbody>');
 
-        if (salesStageFilter === undefined) salesStageSet.clear();
-        if (iotFilter === undefined) iotSet.clear();
-        if (industryFilter === undefined) industrySet.clear();
-
-        for (var i = 0; i < arrItems.length; i++) {
-
-          if (industryFilter === undefined) {
-            var industryValue = arrItems[i]["Industry"];
-            if (industryValue !== undefined && industryValue !== '') {
-              industrySet.add(industryValue);
-            }
-          }
-          if (iotFilter === undefined) {
-            var iotValue = arrItems[i]["IOT"];
-            if (iotValue !== undefined && iotValue !== '') {
-              iotSet.add(iotValue);
-            }
-          }
-          if (salesStageFilter === undefined) {
-            var salesStageValue = arrItems[i]["Sales Stage"];
-            if (salesStageValue !== undefined && salesStageValue !== '') {
-              salesStageSet.add(salesStageValue);
-            }
-          }
-        }
-        if (salesStageFilter === undefined) updateSelect("salesStageSelect", salesStageSet);
-        if (iotFilter === undefined) updateSelect("iotSelect", iotSet);
-        if (industryFilter === undefined) updateSelect("industrySelect", industrySet);
-
       }
-
-
     }
   });
 });
