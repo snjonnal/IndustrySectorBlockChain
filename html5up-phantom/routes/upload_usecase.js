@@ -74,7 +74,7 @@ module.exports = (app) => {
       })
   });
 
-  app.get('/upload', function(req, res) {
+  app.get('/upload_usecase', function(req, res) {
     res.render('upload');
   });
 }

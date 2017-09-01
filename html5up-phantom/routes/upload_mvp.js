@@ -2,8 +2,8 @@ var multer = require('multer');
 var xlstojson = require("xls-to-json-lc");
 var xlsxtojson = require("xlsx-to-json-lc");
 var fs = require('fs');
-var Opportunity = require('../models/opportunity');
-var OpportunityController = require('../controllers/Opportunity');
+var MVP = require('../models/mvp');
+var MVPController = require('../controllers/MVP');
 
 var storage = multer.diskStorage({
   destination: function(req, res, cb) {
@@ -28,7 +28,7 @@ var upload = multer({
 
 module.exports = (app) => {
   /** API path that will upload the files */
-  app.post('/upload', function(req, res) {
+  app.post('/upload_mvp', function(req, res) {
       var exceltojson;
       upload(req,res,function(err){
           if(err){
@@ -43,11 +43,12 @@ module.exports = (app) => {
           /** Check the extension of the incoming file and
            *  use the appropriate module
            */
-           if(req.file.originalname.split('.')[req.file.originalname.split('.').length-1] === 'xlsx'){
+          if(req.file.originalname.split('.')[req.file.originalname.split('.').length-1] === 'xlsx'){
               exceltojson = xlsxtojson;
           } else {
               exceltojson = xlstojson;
           }
+          console.log(req.file.path);
           try {
               exceltojson({
                   input: req.file.path,
@@ -57,37 +58,23 @@ module.exports = (app) => {
                   if(err) {
                       return res.json({error_code:1,err_desc:err, data: null});
                   }
-                  var props = ["Opportunity Number", "IOT", "Client name", "Description", "Engaged","Engaged CIC","Qtr","Industry", "Sales Stage", "Oppty Value (USD mn)", "Opportunity owner","Brand"];
-                  var jsonContent = result.filter(function(element){
-                    return element["Industry Sector"] === "Industrial";
-                  });
 
-                  for(var i=0; i<jsonContent.length;i++){
-                    for (var property in jsonContent[i]) {
-                        if (jsonContent[i].hasOwnProperty(property) && !props.includes(property)) {
-                          //console.log( 'deleting' + property);
-                          delete jsonContent[i][property];
-                        }
-                    }
-                  }
                   // adding values to Database
-                  var opportunityController = new OpportunityController(Opportunity);
-                  opportunityController.insertOpportunityData(jsonContent, (err, response) => {
-                    if(err) console.log('Error Occured while updating data to database');
-                    else console.log('Data added to database');
+                  var mvpController = new MVPController(MVP);
+                  mvpController.insertMVPData(result, (err, response) => {
+                    console.log('Data added to database');
                   });
 
-                  fs.writeFileSync('./assets/data/data3.json', JSON.stringify(jsonContent), 'utf-8');
-                  res.json({error_code:0,err_desc:null, data: jsonContent});
+                  fs.writeFileSync('./assets/data/data5.json', JSON.stringify(result), 'utf-8');
+                  res.json({error_code:0,err_desc:null, data: result});
               });
           } catch (e){
               res.json({error_code:1,err_desc:"Corrupted excel file"});
           }
       })
-
   });
 
-  app.get('/upload', function(req, res) {
-    res.render('upload', {title: 'Blockchain Solution'});
+  app.get('/upload_mvp', function(req, res) {
+    res.render('upload', {title: 'upload'});
   });
 }
