@@ -1,186 +1,229 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>Blockchain @ Industrial Sector</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="css/main.css" />
-	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-</head>
-
-<body>
+<% stylesheets.push('/css/main.css')%>
+<% stylesheets.push('/themes/1/js-image-slider.css')%>
+<% stylesheets.push('https://fonts.googleapis.com/css?family=Raleway:300')%>
+<% layout('layout') %>
+<!--Navbar-->
+<% include partials/topnav %>
 	<!-- Wrapper -->
-	<div id="wrapper">
+	<div>
 
 		<!-- Header -->
-		<header id="header">
+		<section id="headerBanner">
+
 			<div class="inner">
+				<!--<div>-->
+					<!--<span class="image fit"><img src="images/us_bg.png" alt="" /></span>-->
+				<!--</div>-->
 
-				<!-- Logo -->
-				<a href="index" class="logo">
-									<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">IBM Blockchain</span>
-								</a>
-
-				<!-- Nav -->
-				<nav>
-					<ul>
-						<li><a href="#menu">Menu</a></li>
-					</ul>
-				</nav>
-
+			<!--<div id="sliderFrame">
+			<div id="slider">
+			<img src="../images/b1.jpg" />
+			<img src="../images/c1.jpg" />
+			<img src="../images/c2.jpg" />
+			<img src="../images/c3.jpg" />
 			</div>
-		</header>
-
-		<!-- Menu -->
-		<nav id="menu">
-			<h2>Menu</h2>
-			<ul>
-				<li><a href="index">Home</a></li>
-				<li><a href="generic">Ipsum veroeros</a></li>
-				<li><a href="generic">Tempus etiam</a></li>
-				<li><a href="generic">Consequat dolor</a></li>
-				<li><a href="elements">Elements</a></li>
-			</ul>
-		</nav>
+		</div>-->
+			<!--<ul class="actions">
+			<li><a href="#one" class="button scrolly">Discover More</a></li>
+		</ul>-->
+		<!--</div>
+	</section>-->
 
 		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-				<header>
-					<h1>Blockchain @ Industrial Sector<br />
-								</h1>
-					<p>Get an overview of India CIC involvment in Opportunities, Use-Cases & MVP's related to Blockhain Technology. Discover Blockchain technology skills in Industrial sector. Find the latest updates on IBM Blockchain technologies.</p>
-				</header>
-				<section class="tiles">
-					<article class="style1">
-						<span class="image">
-										<img src="../images/pic01.jpg" alt="" />
-									</span>
-						<a href="opportunities">
-							<h2>Opportunities</h2>
-							<div class="content">
-								<p>Explore Possibilities</p>
+		<!--<div id="one" class="main">-->
+		<div>
+			<div>
+			<ul id="hexGrid" style="margin-left: 45%; margin-top:-10%;position:relative">
+					 <li class="hex">
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="opportunities">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>Opportunities</h1>
+								 <h2><img src="../images/op2.png" alt="" /></h2>
+								 <p>Unleash Blockchain Opportunities in Industrial Sector</p>
+							 </a>
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="use-cases">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>Use-Cases</h1>
+								 <h2><img src="../images/uc1.png" alt="" /></h2>
+								 <p>Findout Who is doing What in Blockchain</p>
+							 </a>
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <!--dont remove for hexa view-->
+						 </div>
+					 </li>
+					 <li class="hex">
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="mvp">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>MVP</h1>
+								 <h2><img src="../images/mvp1.png" alt="" /></h2>
+								 <p>Leverage the Potential of Blockchain</p>
+							 </a>
+						 </div>
+					 </li>
+					 <!--center hexa -->
+					 <li class="hex">
+						 <div class="hexIn">
+							 <div class="hexLink" href="">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>What's New</h1>
+								 <h2><img src="../images/w1.png" alt="" /></h2>
+								 <p>Latest Trends & News in Blockchain</p>
+							 </div>
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="trainings">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>Trainings</h1>
+								 <h2><img src="../images/t1.png" alt="" /></h2>
+								 <p>Learn Blockchain to Transform Business</p>
+							 </a>
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							<!--dont remove for hexa view -->
+						 </div>
+					 </li>
+
+					 <!--for hexagon view >-->
+					 <li class="hex">
+						 <div class="hexIn">
+							 <!--temp for hexagon -->
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="client_wins">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>Client Wins</h1>
+								 <h2><img src="../images/cw1.png" alt="" /></h2>
+								 <p>Blockchain Winning Cases</p>
+							 </a>
+						 </div>
+					 </li>
+					 <li class="hex">
+						 <div class="hexIn">
+							 <a class="hexLink" href="contacts">
+								 <img src="../images/g1.png" alt="" />
+								 <h1>Contacts</h1>
+								 <h2><img src="../images/contact.png" alt="" /></h2>
+								 <p>Reach Us Out</p>
+							 </a>
+						 </div>
+					 </li>
+
+				 </ul>
+			 </div>
+	 </div>
+</section>
+
+<div id="main">
+	<div class="row">
+			<!--First columnn-->
+			<div class="col-md-4">
+					<!--Card-->
+					<div class="card">
+
+							<!--Card image-->
+							<div class="view overlay hm-white-slight">
+									<img src="../images/b1.jpg" class="img-fluid" alt="" style="margin: 0 auto">
+									<a href="#">
+											<div class="mask"></div>
+									</a>
 							</div>
-						</a>
-					</article>
-					<!-- </section>-->
-					<!-- 2nd section-->
-					<!--<section class="tiles"> -->
-					<article class="style2">
-						<span class="image">
-										<img src="../images/pic02.jpg" alt="" />
-									</span>
-						<a href="use-cases">
-							<h2>Use-Cases</h2>
-							<div class="content">
-								<p>Take First Steps</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image">
-										<img src="../images/pic03.jpg" alt="" />
-									</span>
-						<a href="mvp">
-							<h2>MVP</h2>
-							<div class="content">
-								<p>Create Value</p>
-							</div>
-						</a>
-					</article>
-					<!-- </section> -->
-					<!--3rd section-->
-					<!-- <section class="tiles"> -->
-					<article class="style4">
-						<span class="image">
-			<img src="../images/pic04.jpg" alt="" />
-		</span>
-						<a href="trainings">
-							<h2>Trainings</h2>
-							<div class="content">
-								<p>Skill Development</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image">
-			<img src="../images/pic05.jpg" alt="" />
-		</span>
-						<a href="client_wins">
-							<h2>Client Wins </h2>
-							<div class="content">
-								<p>News & Trends</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image">
-			<img src="../images/pic05.jpg" alt="" />
-		</span>
-						<a href="contacts">
-							<h2>contacts</h2>
-							<div class="content">
-								<p>Reach Out</p>
-							</div>
-						</a>
-					</article>
-				</section>
+							<!--/.Card image-->
+
+							<!--Card content-->
+							<!--<div class="card-block">
+									<h4 class="card-title">Card title</h4>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="btn btn-primary">Read more</a>
+							</div>-->
+							<!--/.Card content-->
+
+					</div>
+					<!--/.Card-->
 			</div>
-		</div>
+			<!--First columnn-->
+
+			<!--Second columnn-->
+			<div class="col-md-4">
+					<!--Card-->
+					<div class="card">
+
+							<!--Card image-->
+							<div class="view overlay hm-white-slight">
+									<img src="../images/c1.jpg" class="img-fluid" alt="">
+									<a href="#">
+											<div class="mask"></div>
+									</a>
+							</div>
+							<!--/.Card image-->
+
+							<!--Card content-->
+						<!--	<div class="card-block">
+									<h4 class="card-title">Card title</h4>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="btn btn-primary">Read more</a>
+							</div>-->
+							<!--/.Card content-->
+
+					</div>
+					<!--/.Card-->
+			</div>
+			<!--Second columnn-->
+
+			<!--Third columnn-->
+			<div class="col-md-4">
+					<!--Card-->
+					<div class="card">
+
+							<!--Card image-->
+							<div class="view overlay hm-white-slight">
+									<img src="../images/b3.jpg" class="img-fluid" alt="">
+									<a href="#">
+											<div class="mask"></div>
+									</a>
+							</div>
+							<!--/.Card image-->
+
+							<!--Card content-->
+							<!--<div class="card-block">
+									<h4 class="card-title">Card title</h4>
+									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<a href="#" class="btn btn-primary">Read more</a>
+							</div>-->
+							<!--/.Card content-->
+
+					</div>
+					<!--/.Card-->
+			</div>
+			<!--Third columnn-->
+	</div>
+	<!--/.Second row-->
+
+
+</div>
 
 		<!-- Footer -->
-		<footer id="footer">
-			<div class="inner">
-				<section>
-					<h2>Get in touch</h2>
-					<form method="post" action="#">
-						<div class="field half first">
-							<input type="text" name="name" id="name" placeholder="Name" />
-						</div>
-						<div class="field half">
-							<input type="email" name="email" id="email" placeholder="Email" />
-						</div>
-						<div class="field">
-							<textarea name="message" id="message" placeholder="Message"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send" class="special" /></li>
-						</ul>
-					</form>
-				</section>
-
-
-				<section>
-					<h2>Follow</h2>
-					<ul class="icons">
-						<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
-						<li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
-						<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-				</section>
-
-				<!-- <ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul> -->
-			</div>
-		</footer>
-
+		<div id="wrapper">
+			<!-- Footer -->
+			<% include partials/footer %>
 	</div>
-
-	<!-- Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/skel.min.js"></script>
-	<script src="js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="js/main.js"></script>
-
-</body>
-
-</html>
+	</div>
+	<script src="/themes/1/js-image-slider.js" type="text/javascript"></script>

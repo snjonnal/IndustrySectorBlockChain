@@ -1,4 +1,48 @@
-<form id="uploadForm" enctype="multipart/form-data" action="upload" method="post">
-  <input type="file" name="file" />Upload
-  <input type="submit" value="Upload" name="submit">
-</form>
+
+
+<% stylesheets.push('/css/table.css')%>
+<% layout('layout') %>
+
+	<!--Navbar-->
+<% include partials/nav %>
+
+<div id="wrapper">
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+
+			<!-- Logo -->
+			<a href="index" class="logo">
+				<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Blockchain in Industrial Sector</span>
+			</a>
+
+      <form id="uploadForm" enctype="multipart/form-data" action="upload" method="post">
+        <input type="file" name="file" />Upload
+        <input type="submit" value="Upload" name="submit">
+      </form>
+      
+      <form id="uploadForm" enctype="multipart/form-data" action="upload_usecase" method="post">
+        <input type="file" name="file" />Upload
+        <input type="submit" value="Upload" name="submit">
+      </form>
+
+      <form id="uploadForm" enctype="multipart/form-data" action="upload_mvp" method="post">
+        <input type="file" name="file" />Upload
+        <input type="submit" value="Upload" name="submit">
+      </form>
+
+
+
+		</div>
+	</header>
+	<!-- Footer -->
+	<% include partials/footer %>
+
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/client_wins.js"></script>
+<!-- <script type="text/javascript" src="js/clients_win0.js"></script> -->
+
+	<!-- Scripts -->
