@@ -48,13 +48,17 @@
 
 
 .rwd-table {
-  background: #34495E;
-  color: #fff;
-  border-radius: .4em;
+  /*background: #34495E;*/
+  /*background: #2d74da;*/
+  color: #2d74da;
+  border-radius: .10em;
   overflow: hidden;
 }
 .rwd-table tr {
   border-color: #46637f;
+}
+.rwd-table th{
+  background: #5392ff;
 }
 .rwd-table th, .rwd-table td {
   margin: .5em 1em;
@@ -116,6 +120,7 @@ td.container {
 	border-collapse: collapse;
 	border-bottom: #ccc 2px solid;
 	padding: 0;
+  font-weight: 600
 }
 .tablesorter-default tfoot th,
 .tablesorter-default tfoot td {
