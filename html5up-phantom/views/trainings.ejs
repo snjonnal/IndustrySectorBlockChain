@@ -9,13 +9,41 @@
 			<header id="header">
 				<div class="inner">
 					<h2>Blockchain India Sector wise badges</h2>
-					<div class="row">
+					<!-- <div class="row">
 							<div class="col-md-1"></div>
 							<div class="col-md-6"><img src="images/blockchain_badges_report.jpg" class="img-fluid" alt="" style="margin: 0 auto"></div>
 							<div class="col-md-5"><img src="images/india_sectorwise_badges.jpg" class="img-fluid" alt="" style="margin: 0 auto"></div>
+					</div> -->
+
+					<div class="row" style="padding-top:20px">
+						<div class="col-md-6 col-sm-12 col-lg-6 col-xs-12" >
+							<h3><span class="label label-default">Badges per Industrial Sector</span></h3>
+							<p>Blockchain badges for different Industrial Sectors</p>
+							<div id="chart_div1"></div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-lg-6 col-xs-12">
+							<h3><span class="label label-default">Blockchain badges distribution for different Sectors</span></h3>
+							<p>Blockchain badges for Industrial Sector seggrgated by various industries.</p>
+							<div id="chart_div2"></div>
+						</div>
 					</div>
 
-					<div style="margin-top:5%;">
+					<div class="row" style="padding-top:20px">
+						<div class="col-md-6 col-sm-12 col-lg-6 col-xs-12" >
+							<h3><span class="label label-default">Sector wise Status for Blockchain Awareness Course</span></h3>
+							<p>Blockchain Awareness Course for different Industrial Sectors</p>
+							<div id="chart_div3"></div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-lg-6 col-xs-12">
+							<h3><span class="label label-default">Blockchain Awareness Course distribution for different Sectors</span></h3>
+							<p>Blockchain Awareness Course for Industrial Sector seggrgated by various industries.</p>
+							<div id="chart_div4"></div>
+						</div>
+					</div>
+
+					<!-- <div style="margin-top:5%;">
 						<div class="row"><div class="col-md-1"></div>
 							<div class="col-md-10">
 								<table class="table table-striped table-sm">
@@ -196,9 +224,7 @@
 							</div>
 							<div class="col-md-1"></div>
 						</div>
-					</div>
-
-
+					</div> -->
 
 				</div>
 			</header>
@@ -216,3 +242,5 @@
 			<% include partials/footer %>
 
 		</div>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="js/training_charts.js"></script>

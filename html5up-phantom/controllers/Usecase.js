@@ -1,7 +1,7 @@
 var UsecaseController = function(usecaseModel) {
   this.usecaseModel = usecaseModel;
   this.ApiResponse = require('../models/api-response');
-  this.usecaseFilter = ["Image", "#", "Industry","Sector", "Account", "Shortlisted Use Case", "Account SPOC", "Status"];
+  this.usecaseFilter = ["#", "Industry","Sector", "Account", "Shortlisted Use Case", "Account SPOC", "Status", "Value Add to IBM", "Value Add to Client","Potential Saving", "Critical"];
 
   UsecaseController.prototype.getUsecaseData = function(callback) {
     var me = this;
@@ -22,7 +22,7 @@ var UsecaseController = function(usecaseModel) {
       for(var i=0; i<data.length;i++){
          strJson += "{"
         for (var j=0; j<me.usecaseFilter.length;j++) {
-           strJson += '"' + me.usecaseFilter[j]+'":"' + data[i][me.usecaseFilter[j]]  + '"';
+           strJson += '"' + me.usecaseFilter[j]+'":"' + escapeJson(data[i][me.usecaseFilter[j]])  + '"';
            if (j < me.usecaseFilter.length-1) {
               strJson += ',';
             }
@@ -34,6 +34,7 @@ var UsecaseController = function(usecaseModel) {
       }
       strJson +="]";
       jsonData = JSON.parse(strJson);
+      //jsonData = JSON.parse(strJson);
       return callback(err, new me.ApiResponse({
         success: true,
         extras: {
@@ -45,9 +46,8 @@ var UsecaseController = function(usecaseModel) {
 
   UsecaseController.prototype.insertUsecaseData = function(usecaseData, callback) {
     var me = this;
-    me.usecaseModel.remove({}, function(data){
+    me.usecaseModel.remove({}, function(){
       console.log('removed successfully');
-      console.log(data);
     })
     me.usecaseModel.create(usecaseData, (err, usecases) => {
       if (err) {
@@ -67,6 +67,13 @@ var UsecaseController = function(usecaseModel) {
       }));
     })
   }
+}
+
+function escapeJson(str){
+  str = str.replace(new RegExp("\"", 'g'),"\\\"");
+  str = str.replace(new RegExp("\n", 'g'),"\\n");
+  str = str.replace(new RegExp("\r", 'g'),"\\r");
+  return str;
 }
 
 module.exports = UsecaseController;

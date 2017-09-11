@@ -1,0 +1,68 @@
+<% layout('layout') %>
+
+	<!--Navbar-->
+	<!-- <% include partials/topNav %> -->
+	<% include partials/nav %>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<h2>Trainings</h2>
+							<h3>This page is under construction. Please come back soon!</h3>
+						<section>
+							<div id="chartContainer" style="height: 300px; max-width: 500px;margin: auto;
+							  ">
+							</div>
+						</section>
+
+						</div>
+					</div>
+
+					<!-- Footer -->
+					<% include partials/footer %>
+			</div>
+
+		<!-- Scripts -->
+
+			<script type="text/javascript">
+				window.onload = function () {
+					var chart = new CanvasJS.Chart("chartContainer",
+					{
+						title:{
+							text: "Overall training completion"
+						},
+						axisY: {
+							title: "Number of people completed",
+							maximum: 7442
+						},
+						data: [
+						{
+							type: "column",
+							showInLegend: true,
+							legendText: "Completion",
+							color: "gold",
+							dataPoints: [
+							{ y: 6728, label: "Block Chain"},
+							{ y: 713, label: "Badge"},
+							]
+						}
+						]
+					});
+
+			chart.render();
+			}
+			</script>
+			<script type="text/javascript" src="js/canvasjs.min.js"></script>
+	</body>
+</html>

@@ -1,10 +1,10 @@
-var MVPController = function(mvpModel) {
-  this.mvpModel = mvpModel;
+var BadgeController = function(badgeModel) {
+  this.badgeModel = badgeModel;
   this.ApiResponse = require('../models/api-response');
 
-  MVPController.prototype.getMVPData = function(callback) {
+  BadgeController.prototype.getBadgeData = function(callback) {
     var me = this;
-    me.mvpModel.find({}, {
+    me.badgeModel.find({}, {
       _id: 0
     }).select('-__v').exec((err, data) => {
       if (err) {
@@ -26,12 +26,12 @@ var MVPController = function(mvpModel) {
     })
   }
 
-  MVPController.prototype.insertMVPData = function(mvpData, callback) {
+  BadgeController.prototype.insertBadgeData = function(badgeData, callback) {
     var me = this;
-    me.mvpModel.remove({}, function(){
+    me.badgeModel.remove({}, function(){
       console.log('removed successfully');
-    });
-    me.mvpModel.create(mvpData, (err, mvps) => {
+    })
+    me.badgeModel.create(badgeData, (err, badges) => {
       if (err) {
         return callback(err, new me.ApiResponse({
           success: false,
@@ -40,15 +40,15 @@ var MVPController = function(mvpModel) {
           }
         }));
       }
-      console.log('mvps' + mvps.length);
+      console.log('badges' + badges.length);
       return callback(err, new me.ApiResponse({
         success: true,
         extras: {
-          data: mvps
+          data: badges
         }
       }));
     })
   }
 }
 
-module.exports = MVPController;
+module.exports = BadgeController;

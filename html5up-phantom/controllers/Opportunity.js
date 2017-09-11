@@ -47,6 +47,9 @@ var OpportunityController = function(opportunityModel) {
   OpportunityController.prototype.insertOpportunityData = function(opportunityData, callback) {
     console.log("Inserting data to database");
     var me = this;
+    me.opportunityModel.remove({}, function(){
+      console.log('removed successfully');
+    });
     me.opportunityModel.create(opportunityData, (err, opportunities) => {
       if (err) {
         return callback(err, new me.ApiResponse({

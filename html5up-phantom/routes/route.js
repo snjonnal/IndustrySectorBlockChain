@@ -2,9 +2,13 @@ var fs = require('fs');
 var Opportunity = require('../models/opportunity');
 var Usecase = require('../models/usecase');
 var MVP = require('../models/mvp');
+var Badge = require('../models/badge');
+var BlockchainAwarenessCourse = require('../models/blockchainAwarenessCourse');
+var MVPController = require('../controllers/MVP.js');
 var OpportunityController  = require('../controllers/Opportunity.js');
 var UsecaseController  = require('../controllers/Usecase.js');
-var MVPController  = require('../controllers/MVP.js');
+var BadgeController  = require('../controllers/Badge.js');
+var BlockchainAwarenessCourseController  = require('../controllers/BlockchainAwarenessCourse.js');
 
 module.exports = (app) => {
   console.log('inside route.js');
@@ -40,6 +44,7 @@ module.exports = (app) => {
   app.get('/contacts', function(req,res, next){
     res.render('contacts', {title: 'Blockchain Contacts'});
   });
+
 
 // to delete
   app.get('/generic', function(req,res, next){
@@ -100,6 +105,20 @@ module.exports = (app) => {
   app.get('/mvp_data', function(req,res, next){
     var mvpController = new MVPController(MVP);
     mvpController.getMVPData((err, response) => {
+      return res.send(response);
+    });
+  });
+
+  app.get('/badge_data', function(req,res, next){
+    var badgeController = new BadgeController(Badge);
+    badgeController.getBadgeData((err, response) => {
+      return res.send(response);
+    });
+  });
+
+  app.get('/blockchainAwarenessCourse_data', function(req,res, next){
+    var blockchainAwarenessCourseController = new BlockchainAwarenessCourseController(BlockchainAwarenessCourse);
+    blockchainAwarenessCourseController.getBlockchainAwarenessCourseData((err, response) => {
       return res.send(response);
     });
   });

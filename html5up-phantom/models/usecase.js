@@ -14,7 +14,11 @@ var usecaseSchema = mongoose.Schema({
   'Scheduled Date': {type:String, required: false},
   'Comments': {type:String, required: false},
   'Final Status': {type:String, required: false},
-  'Image': {type:String, required: false}
+  'Value Add to IBM': {type:String, required: false},
+  'Value Add to Client': {type:String, required: false},
+  'Potential Saving': {type:String, required: false},
+  'Critical': {type:String, required: false}
+  //'Image': {type:String, required: false}
 });
 
 

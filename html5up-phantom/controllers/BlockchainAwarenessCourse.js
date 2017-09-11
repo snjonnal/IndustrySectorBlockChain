@@ -1,10 +1,10 @@
-var MVPController = function(mvpModel) {
-  this.mvpModel = mvpModel;
+var BlockchainAwarenessCourseController = function(blockchainAwarenessCourseModel) {
+  this.blockchainAwarenessCourseModel = blockchainAwarenessCourseModel;
   this.ApiResponse = require('../models/api-response');
 
-  MVPController.prototype.getMVPData = function(callback) {
+  BlockchainAwarenessCourseController.prototype.getBlockchainAwarenessCourseData = function(callback) {
     var me = this;
-    me.mvpModel.find({}, {
+    me.blockchainAwarenessCourseModel.find({}, {
       _id: 0
     }).select('-__v').exec((err, data) => {
       if (err) {
@@ -26,12 +26,12 @@ var MVPController = function(mvpModel) {
     })
   }
 
-  MVPController.prototype.insertMVPData = function(mvpData, callback) {
+  BlockchainAwarenessCourseController.prototype.insertBlockchainAwarenessCourseData = function(blockchainAwarenessCourseData, callback) {
     var me = this;
-    me.mvpModel.remove({}, function(){
+    me.blockchainAwarenessCourseModel.remove({}, function(){
       console.log('removed successfully');
-    });
-    me.mvpModel.create(mvpData, (err, mvps) => {
+    })
+    me.blockchainAwarenessCourseModel.create(blockchainAwarenessCourseData, (err, blockchainAwarenessCourses) => {
       if (err) {
         return callback(err, new me.ApiResponse({
           success: false,
@@ -40,15 +40,15 @@ var MVPController = function(mvpModel) {
           }
         }));
       }
-      console.log('mvps' + mvps.length);
+      console.log('blockchainAwarenessCourses' + blockchainAwarenessCourses.length);
       return callback(err, new me.ApiResponse({
         success: true,
         extras: {
-          data: mvps
+          data: blockchainAwarenessCourses
         }
       }));
     })
   }
 }
 
-module.exports = MVPController;
+module.exports = BlockchainAwarenessCourseController;
