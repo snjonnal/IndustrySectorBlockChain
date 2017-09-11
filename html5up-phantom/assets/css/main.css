@@ -3018,11 +3018,13 @@
 		max-width: 80%;
 		height: 100%;
 		-webkit-overflow-scrolling: touch;
-		background: #585858;
-		color: #ffffff;
+		background: #ffffff;
+		color: #1f57a4;
 		cursor: default;
 		visibility: hidden;
 		z-index: 10002;
+		font-weight: 400;
+		font-family: Arial;font-size:18px;
 	}
 
 		#menu > .inner {
@@ -3712,7 +3714,7 @@ display: flex;
 		/*background-color: #4686a0;*/
 		/*color: rgba(255, 255, 255, 0.75);*/
 		/*background-attachment: fixed,							fixed,							fixed;*/
-		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-image:url("../images/bc12.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
 		background-position: top left,						center center,					center center;
 		/*background-size: auto,							cover,							cover;*/
 		background-size: 100% 100%;
@@ -3727,7 +3729,7 @@ display: flex;
 		/*background-color: #4686a0;*/
 		/*color: rgba(255, 255, 255, 0.75);*/
 		/*background-attachment: fixed,							fixed,							fixed;*/
-		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-image:url("../images/bc14.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
 		background-position: top left,						center center,					center center;
 		/*background-size: auto,							cover,							cover;*/
 		background-size: 100% 100%;
