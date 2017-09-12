@@ -1843,9 +1843,9 @@
 		text-align: center;
 	}
 
-	header p {
+	/*header p {
 		margin-top: -1em;
-	}
+	}*/
 
 	@media screen and (max-width: 736px) {
 
@@ -3636,14 +3636,12 @@ display: flex;
   webkit-transform:translate3d(0,100%,0);
       -ms-transform:translate3d(0,100%,0);
           transform:translate3d(0,100%,0);
-	display: none;
 }
 
 
 /*** HOVER EFFECT  **********************************************************************/
 
 .hexLink:hover p, .hexLink:focus p{
-	display: block;
 	-webkit-transform:translate3d(0,0,0);
       -ms-transform:translate3d(0,0,0);
           transform:translate3d(0,0,0);
@@ -3716,7 +3714,7 @@ display: flex;
 		/*background-color: #4686a0;*/
 		/*color: rgba(255, 255, 255, 0.75);*/
 		/*background-attachment: fixed,							fixed,							fixed;*/
-		background-image:url("../images/bc12.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
+		background-image:url("../images/bc6.jpg")/*url("images/overlay2.png"),linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2)*/;
 		background-position: top left,						center center,					center center;
 		/*background-size: auto,							cover,							cover;*/
 		background-size: 100% 100%;

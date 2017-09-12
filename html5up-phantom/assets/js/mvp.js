@@ -54,7 +54,7 @@ $(document).ready(function() {
         var html = '<div id="modalWindow" tabindex="-1" class="modal hide"role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
         html += '<div class="modal-dialog modal-lg" role="document">';
         html += '<div class="modal-content">';
-        html += '<div class="modal-header">';
+        html += '<div class="modal-header" style="background-color:rgb(212, 214, 216);">';
         html += '<button type="button" class="close" style="height:1em;" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
         html += '<h5 class="modal-title" id="modalLabel">' + mvpDetail.Title + '</h5>';
         html += '</div>';

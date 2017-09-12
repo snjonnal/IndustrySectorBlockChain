@@ -15,7 +15,7 @@ const util = require('util')
 const assert = require('assert');
 
 // true if running local
-var runningLocal = false;
+var runningLocal = true;
 
 // adding middlewares
 app.use(express.static('assets'));
@@ -43,24 +43,6 @@ app.locals.renderLinkTags = function (all) {
 app.locals.getStylesheets = function(req, res) {
   return stylesheets;
 }
-
-// app.locals({
-//     stylesheets: [],
-//   renderScriptsTags: function (all) {
-//     app.locals.stylesheets = [];
-//     if (all != undefined) {
-//       return all.map(function(stylesheet) {
-//         return '<link href="/css/' + stylesheet + '" rel="stylesheet"></link>';
-//       }).join('\n ');
-//     }
-//     else {
-//       return '';
-//     }
-//   },
-//   getStylesheets: function(req, res) {
-//     return stylesheets;
-//   }
-// });
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
@@ -111,17 +93,19 @@ mongoose.connect(credentials.uri, {
 //routes
 require('./routes/route')(app);
 require('./routes/upload_usecase')(app);
-require('./routes/upload_mvp')(app);
 require('./routes/upload')(app);
+require('./routes/upload_mvp')(app);
+require('./routes/upload_badge')(app);
+require('./routes/upload_blockchainAwarenessCourse')(app);
 
 
 var port = app.get('PORT') || 3000;
 
-if (runningLocal) {
-  app.listen(port, function() {
-    console.log('App running on 3000');
-  });
-} else {
+// if (runningLocal) {
+//   app.listen(port, function() {
+//     console.log('App running on 3000');
+//   });
+// } else {
 
   // start server on the specified port and binding host
   app.listen(appEnv.port, appEnv.bind, function() {
@@ -129,4 +113,4 @@ if (runningLocal) {
     // print a message when the server starts listening
     console.log("server starting on " + appEnv.url);
   });
-}
+//}
