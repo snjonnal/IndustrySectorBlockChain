@@ -6,7 +6,9 @@ $(document).ready(function() {
       if (!response.success) return console.log(response.extras.msg);
       var data = response.extras.data;
       //console.log(data.length);
-
+      data.sort(function(a,b){
+        return b["Critical"].localeCompare(a["Critical"]);
+      })
       var accountData = [];
       let industrySet = new Set();
       let accountSet = new Set();
@@ -31,10 +33,13 @@ $(document).ready(function() {
           accountDetails["Account SPOC"] = [];
           accountDetails["Shortlisted Use Case"] = [];
           accountDetails["Status"] = [];
+          accountDetails["Value Add to IBM"] = [];
+          accountDetails["Value Add to Client"] = [];
+          accountDetails["Potential Saving"] = [];
           //accountDetails["Comments"] = [];
           //accountDetails["Final Status"] = [];
 
-          accountDetails["Image"] = usecase["Image"];
+          accountDetails["Image"] = getImageName(usecase["Account"]) + ".jpg";
           accountDetails["Account"] = usecase["Account"];
           accountDetails["Number of Usecases"] = 1;
 
@@ -46,6 +51,9 @@ $(document).ready(function() {
           accountDetails["Status"].push(usecase["Status"]);
           //accountDetails["Comments"].push(usecase["Comments"]);
           //accountDetails["Final Status"].push(usecase["Final Status"]);
+          accountDetails["Value Add to IBM"].push(usecase["Value Add to IBM"]);
+          accountDetails["Value Add to Client"].push(usecase["Value Add to Client"]);
+          accountDetails["Potential Saving"].push(usecase["Potential Saving"]);
 
           accountData.push(accountDetails);
         } else {
@@ -56,13 +64,12 @@ $(document).ready(function() {
           accountDetails["Account SPOC"].push(usecase["Account SPOC"]);
           accountDetails["Shortlisted Use Case"].push(usecase["Shortlisted Use Case"]);
           accountDetails["Status"].push(usecase["Status"]);
-          //accountDetails["Comments"].push(usecase["Comments"]);
-          //accountDetails["Final Status"].push(usecase["Final Status"]);
+          accountDetails["Value Add to IBM"].push(usecase["Value Add to IBM"]);
+          accountDetails["Value Add to Client"].push(usecase["Value Add to Client"]);
+          accountDetails["Potential Saving"].push(usecase["Potential Saving"]);
         }
       });
       var accountDataFiltered = accountData;
-      //console.log("accountData size: " + accountData.length);
-      //console.log(accountData);
 
       function getAccount(accountData, accountName) {
         var accountDetailsObj = null;
@@ -99,10 +106,10 @@ $(document).ready(function() {
         var htmlStr = "";
         accountData.forEach(function(accountDetails) {
           htmlStr += "<div class=\"col-md-4 col-sm-6 card-style\"><div class=\"card\"><div class=\"view overlay hm-white-slight mx-auto\">" +
-            "<img class=\"card-img-top img-fluid\" src=\"images/" + accountDetails["Image"] + "\" class=\"img-fluid\" alt=\"\">" +
+            "<img class=\"card-img-top img-fluid img-usecase\" src=\"images/" + accountDetails["Image"] + "\" alt=\"\">" +
             "<a href=\"#\"> <div class=\"mask\"></div></a></div>" + "<div class=\"card-block\"><h4 class=\"card-title\">" +
             accountDetails["Account"] + "</h4><p class=\"card-text\">" + "Number of Usecases: " + accountDetails["Number of Usecases"] +
-            "</p> <a href=\"#\" class=\"btn btn-primary usecase-modal\" data=\"" + accountDetails["Account"] + "\">Read more</a></div></div></div>"
+            "</p> <a href=\"#\" class=\"btn btn-primary usecase-modal\" data=\"" + accountDetails["Account"] + "\">Read more</a></div></div></div>";
         });
         $(htmlStr).appendTo('#usecase-content');
       }
@@ -218,6 +225,9 @@ $(document).ready(function() {
                 accountDetails["Shortlisted Use Case"].splice(i, 1);
                 accountDetails["Status"].splice(i, 1);
                 accountDetails["Account SPOC"].splice(i, 1);
+                accountDetails["Value Add to IBM"].splice(i, 1);
+                accountDetails["Value Add to Client"].splice(i, 1);
+                accountDetails["Potential Saving"].splice(i, 1);
                 accountDetails["Number of Usecases"] -= 1;
                 --i;
               }
@@ -236,6 +246,9 @@ $(document).ready(function() {
                 accountDetails["Shortlisted Use Case"].splice(i, 1);
                 accountDetails["Industry"].splice(i, 1);
                 accountDetails["Account SPOC"].splice(i, 1);
+                accountDetails["Value Add to IBM"].splice(i, 1);
+                accountDetails["Value Add to Client"].splice(i, 1);
+                accountDetails["Potential Saving"].splice(i, 1);
                 accountDetails["Number of Usecases"] -= 1;
                 --i;
               }
@@ -307,6 +320,9 @@ $(document).ready(function() {
           data.sector = accountDetails["Sector"][index];
           data.usecase = accountDetails["Shortlisted Use Case"][index];
           data.status = accountDetails["Status"][index];
+          data.value_add_to_ibm = accountDetails["Value Add to IBM"][index];
+          data.value_add_to_client = accountDetails["Value Add to Client"][index];
+          data.potential_saving = accountDetails["Potential Saving"][index];
           //console.log(accountDetails["Number of Usecases"]);
           doModal('idMyModal', data, index, accountDetails["Number of Usecases"]);
         }
@@ -315,37 +331,97 @@ $(document).ready(function() {
       function doModal(placementId, data, currentIdx, noOfUsecases) {
         //console.log('noOfUsecases' + noOfUsecases);
         //console.log("doModal()");
-        var html = '<div id="modalWindow" tabindex="-1" class="modal hide"role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
-        html += '<div class="modal-dialog" role="document">';
+        var html = '<div id="modalWindow" tabindex="-1" class="modal hide" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+        html += '<div class="modal-dialog modal-lg" role="document">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
-        html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
-        html += '<h5 class="modal-title" id="modalLabel">' + data.account + '</h5>';
+        html += '<button type="button" class="close" style="height:1em;" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
+        html += '<h5 class="modal-title ml-auto" id="modalLabel">' + data.account + '</h5>';
+
+        html += '<span class="ml-auto">' + (parseInt(currentIdx) + 1) + 'of' + noOfUsecases + '</span>';
+
+        var previousIdx = currentIdx == 0 ? 'disabled' : parseInt(currentIdx) - 1;
+        var nextIdx = currentIdx >= noOfUsecases - 1 ? 'disabled' : parseInt(currentIdx) + 1;
+        if (previousIdx === 'disabled')
+          html += '<span class="btn btn-secondary disabled btn-sm link ml-auto" id="" style="justify-content: flex-end;">Prev</span>';
+        else
+          html += '<span class="btn btn-secondary btn-sm btn-nav link ml-auto" id="' + previousIdx + '">Prev</span>';
+        if (nextIdx === 'disabled')
+          html += '<span class="btn btn-secondary btn-sm disabled link" id="">Next</span>';
+        else
+          html += '<span class="btn btn-secondary btn-sm btn-nav link" id="' + nextIdx + '">Next</span>';
+        html += '<span class="btn btn-secondary btn-close btn-sm link" data-dismiss="modal">Close</span>';
+
+
+
         html += '</div>';
         html += '<div class="modal-body">';
         html += "<img class=\"center-block img-fluid\" src=\"images/" + data.image + "\" class=\"img-fluid\" alt=\"\">";
-        html += '<table>';
+        /*html += '<table>';
         html += '<tr><td>Account Spoc</td><td>' + data.account_spoc + '</td></tr>';
         html += '<tr><td>Shortlisted Usecase</td><td>' + data.usecase + '</td></tr>';
         html += '<tr><td>Sector</td><td>' + data.sector + '</td></tr>';
         html += '<tr><td>Industry</td><td>' + data.industry + '</td></tr>';
         html += '<tr><td>Status</td><td>' + data.status + '</td></tr>';
-        html += '</table>';
-        html += '</div>';
-        html += '<div class="modal-footer">';
-        var previousIdx = currentIdx == 0 ? 'disabled' : parseInt(currentIdx) - 1;
-        var nextIdx = currentIdx >= noOfUsecases - 1 ? 'disabled' : parseInt(currentIdx) + 1;
-        if (previousIdx === 'disabled')
-          html += '<span class="btn btn-secondary disabled link" id="" >Prev</span>';
-        else
-          html += '<span class="btn btn-secondary btn-nav link" id="' + previousIdx + '">Prev</span>';
-        if (nextIdx === 'disabled')
-          html += '<span class="btn btn-secondary disabled link" id="" >Next</span>';
-        else
-          html += '<span class="btn btn-secondary btn-nav link" id="' + nextIdx + '" >Next</span>';
-        html += '<span class="btn btn-secondary btn-close link" data-dismiss="modal">Close</span>';
+        html += '</table>';*/
 
-        html += '</div>'; // footer
+        html += '<div id="value_add_to_client">';
+        html += '<h3 class="no-margin">Value Add to Client</h3>';
+        html += '<p>' + data.value_add_to_client + '</p>';
+        html += '</div>';
+
+        html += '<div id="value_add_to_ibm">';
+        html += '<h3 class="no-margin">Value Add to IBM</h3>';
+        html += '<p>' + data.value_add_to_ibm + '</p>';
+        html += '</div>';
+
+        html += '<div id="potential_saving">';
+        html += '<h3 class="no-margin">Potential Saving</h3>';
+        html += '<p>' + data.potential_saving + '</p>';
+        html += '</div>';
+
+        html += '<div id="account_spoc">';
+        html += '<h3 class="no-margin">Account Spoc</h3>';
+        html += '<p>' + data.account_spoc + '</p>';
+        html += '</div>';
+
+        html += '<div id="shortlisted_usecase">';
+        html += '<h3 class="no-margin">Shortlisted Usecase</h3>';
+        html += '<p>' + data.usecase + '</p>';
+        html += '</div>';
+
+        html += '<div id="sector">';
+        html += '<h3 class="no-margin">Sector</h3>';
+        html += '<p>' + data.sector + '</p>';
+        html += '</div>';
+
+        html += '<div id="industry">';
+        html += '<h3 class="no-margin">Industry</h3>';
+        html += '<p>' + data.industry + '</p>';
+        html += '</div>';
+
+        html += '<div id="status">';
+        html += '<h3 class="no-margin">Status</h3>';
+        html += '<p>' + data.status + '</p>';
+        html += '</div>';
+
+
+
+        html += '</div>';
+        //html += '<div class="modal-footer">';
+        // var previousIdx = currentIdx == 0 ? 'disabled' : parseInt(currentIdx) - 1;
+        // var nextIdx = currentIdx >= noOfUsecases - 1 ? 'disabled' : parseInt(currentIdx) + 1;
+        // if (previousIdx === 'disabled')
+        //   html += '<span class="btn btn-secondary disabled link" id="" >Prev</span>';
+        // else
+        //   html += '<span class="btn btn-secondary btn-nav link" id="' + previousIdx + '">Prev</span>';
+        // if (nextIdx === 'disabled')
+        //   html += '<span class="btn btn-secondary disabled link" id="" >Next</span>';
+        // else
+        //   html += '<span class="btn btn-secondary btn-nav link" id="' + nextIdx + '" >Next</span>';
+        // html += '<span class="btn btn-secondary btn-close link" data-dismiss="modal">Close</span>';
+
+        //html += '</div>'; // footer
         html += '</div>'; // modalWindow
         $("#" + placementId).html(html);
         $("#modalWindow").modal();
@@ -372,4 +448,14 @@ $(document).ready(function() {
       });
     }
   });
+
+  function getImageName(str) {
+    // removing special chars
+    str = str.replace(/[^a-zA-Z0-9_ ]/g, '');
+    // replacing spaces with _
+    var newString = str.replace(/\s+/g, '_');
+    //var newString = str.replace(/[^a-zA-Z0-9]/ig, "_");
+    return newString.toLowerCase();
+  }
+
 });

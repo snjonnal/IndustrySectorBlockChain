@@ -19,9 +19,9 @@ $(document).ready(function() {
           htmlStr += "<div class=\"col-md-4 col-sm-4 card-style\"><div class=\"card\"><div class=\"view overlay hm-white-slight mx-auto\">" +
             "<img class=\"card-img-top img-fluid\" src=\"images/" + mvpDetails["Image"] + "\" style=\"margin: 0 auto\" alt=\"\">" +
             "<a href=\"#\"> <div class=\"mask\"></div></a></div>" + "<div class=\"card-block\"><h4 class=\"card-title\">" +
-            mvpDetails["Title"] + "</h4> <table class\"modal-table\"> <tr><td><p class=\"card-text\">" + "Title Description:</p> </td><td> " + mvpDetails["Title Description"]
+            mvpDetails["Title"] + "</h4> <table class\"modal-table\"> <tr><td> " + mvpDetails["Title Description"]
             /* + "</td> </tr>" + "<tr><td><p class=\"card-text\">Problem Statement:</p> </td><td>" + mvpDetails["Problem Statement"]*/ + "</td> </tr> </table>" +
-            "<a href=\"#\" class=\"btn btn-primary mvp-modal\" data=\"" + mvpDetails["Title"] + "\">Read more</a></div></div></div>"
+            "<a href=\"#\" class=\"btn btn-primary mvp-modal\" data=\"" + mvpDetails["Title"] + "\">Read more</a></div></div></div>";
         });
         $(htmlStr).appendTo('#mvp-content');
       }
@@ -31,7 +31,7 @@ $(document).ready(function() {
         var mvpTitle = $(this).attr('data');
         var mvpObj = getMVPObject(mvpTitle);
         if (mvpObj != null) {
-          showMVPModal('idMyModal', mvpObj, "navigate();", null);
+          showMVPModal('idMyModal', mvpObj);
         }
       }
 
@@ -49,14 +49,13 @@ $(document).ready(function() {
         return mvpObj;
       }
 
-      function showMVPModal(placementId, mvpDetail, currentIdx, noOfUsecases) {
-        //console.log('noOfUsecases' + noOfUsecases);
-        //console.log("doModal()");
+      function showMVPModal(placementId, mvpDetail) {
+
         var html = '<div id="modalWindow" tabindex="-1" class="modal hide"role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
         html += '<div class="modal-dialog modal-lg" role="document">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
-        html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
+        html += '<button type="button" class="close" style="height:1em;" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
         html += '<h5 class="modal-title" id="modalLabel">' + mvpDetail.Title + '</h5>';
         html += '</div>';
         html += '<div class="modal-body">';
@@ -64,17 +63,22 @@ $(document).ready(function() {
 
 
         html += '<div id="desc">';
-        html += '<h3>Title Description</h3>';
+        html += '<h3 class="no-margin">Title Description</h3>';
         html += '<p>' + mvpDetail["Title Description"] + '</p>';
         html += '</div>';
         html += '<div id="problem_statement">';
-        html += '<h3>Problem Statement</h3>'
+        html += '<h3 class="no-margin">Problem Statement</h3>'
         html += '<p>' + mvpDetail["Problem Statement"] + '</p>';
         html += '</div>';
         html += '<div id="proposed_solution">';
-        html += '<h3>Proposed Solution</h3>';
+        html += '<h3 class="no-margin">Proposed Solution</h3>';
         html += '<p>' + mvpDetail["Proposed Solution"] + '</p>';
         html += '</div>';
+        html += '<div id="references">';
+        html += '<h3 class="no-margin">Demo-URL/References: </h3>';
+        html += '<a href="' + mvpDetail["References"] +  '">' + mvpDetail["References"] + '</a>';
+        html += '</div>';
+
 
         // html += '<table>';
         // html += '<tr><td>Account Spoc</td><td>' + data.account_spoc + '</td></tr>';
@@ -103,7 +107,7 @@ $(document).ready(function() {
 
 function getImageName(str) {
   // removing special chars
-  str = str.replace(/[^a-zA-Z0-9_. ]/g, '');
+  str = str.replace(/[^a-zA-Z0-9_ ]/g, '');
   // replacing spaces with _
   var newString = str.replace(/\s+/g, '_');
   //var newString = str.replace(/[^a-zA-Z0-9]/ig, "_");

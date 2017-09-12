@@ -14,11 +14,11 @@ module.exports = (app) => {
   console.log('inside route.js');
 
   app.get('/', function(req,res, next){
-    res.render('index', {title: 'Blockchain Solution'});
+    res.render('index1', {title: 'Blockchain Solution'});
   });
 
   app.get('/index', function(req,res, next){
-    res.render('index', {title: 'Blockchain Solution'});
+    res.render('index1', {title: 'Blockchain Solution'});
   });
 
   app.get('/opportunities', function(req,res, next){
