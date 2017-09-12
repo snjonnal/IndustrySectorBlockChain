@@ -3892,11 +3892,11 @@ display: flex;
 }*/
 
 .oppLink {
-	color: white;
+	color: green;
 	text-decoration: underline;
   /*border-bottom: 1px solid white;*/
 }
 .oppLink:visited {
-	color: Yellow;
+	color: green;
 
 }
