@@ -8,7 +8,7 @@ $(document).ready(function() {
       for (var i = 0; i < data.length; i++) {
         data[i].Image = getImageName(data[i]["Title"]) + ".jpg";
       }
-      console.log(data);
+      //console.log(data);
       processMVPData(data);
       $('.mvp-modal').on('click', showModal);
 
@@ -111,6 +111,6 @@ function getImageName(str) {
   // replacing spaces with _
   var newString = str.replace(/\s+/g, '_');
   //var newString = str.replace(/[^a-zA-Z0-9]/ig, "_");
-  console.log(newString.toLowerCase());
+  //console.log(newString.toLowerCase());
   return newString.toLowerCase();
 }
