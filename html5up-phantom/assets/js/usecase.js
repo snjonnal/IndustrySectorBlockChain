@@ -338,7 +338,7 @@ $(document).ready(function() {
         html += '<button type="button" class="close" style="height:1em;" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>';
         html += '<h5 class="modal-title ml-auto" id="modalLabel">' + data.account + '</h5>';
 
-        html += '<span class="ml-auto">' + (parseInt(currentIdx) + 1) + 'of' + noOfUsecases + '</span>';
+        html += '<span class="ml-auto">' + (parseInt(currentIdx) + 1) + ' of ' + noOfUsecases + '</span>';
 
         var previousIdx = currentIdx == 0 ? 'disabled' : parseInt(currentIdx) - 1;
         var nextIdx = currentIdx >= noOfUsecases - 1 ? 'disabled' : parseInt(currentIdx) + 1;

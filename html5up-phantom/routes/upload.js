@@ -57,7 +57,7 @@ module.exports = (app) => {
                   if(err) {
                       return res.json({error_code:1,err_desc:err, data: null});
                   }
-                  var props = ["Opportunity Number", "IOT", "Client name", "Description", "Engaged","Engaged CIC","Qtr","Industry", "Sales Stage", "Oppty Value (USD mn)", "Opportunity owner","Brand"];
+                  var props = ["Opportunity Number", "IOT", "Client name", "Description", "Engaged","Engaged CIC","Qtr","Industry", "Sales Stage", "Oppty Value (USD mn)", "Opportunity owner","Brand", "Details"];
                   var jsonContent = result.filter(function(element){
                     return element["Industry Sector"] === "Industrial";
                   });

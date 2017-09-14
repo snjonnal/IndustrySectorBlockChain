@@ -12,7 +12,8 @@ var opportunitySchema = mongoose.Schema({
   'Sales Stage' : {type:String, required: false},
   'Oppty Value (USD mn)': {type:String, required: false},
   'Opportunity owner': {type:String, required: false},
-  'Brand': {type:String, required: false}
+  'Brand': {type:String, required: false},
+  'Details': {type:String, required: false}
 });
 
 
